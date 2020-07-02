@@ -1,5 +1,6 @@
 class PostsController < ApplicationController
-  before_action :signed_in_user, only: [:new, :create]
+  before_action :authenticate_member!, except: [:index]
+
   include PostsHelper
 
   def index
