@@ -1,9 +1,11 @@
 class ApplicationController < ActionController::Base
-  before_action :signed_in_user, only: [:new, :create]
+  before_action :configure_permitted_params, if: :devise_controller?
 
-  def signed_in_user
-      unless signed_in?
-        redirect_to 
-      end
-    end
+  protected
+
+  def configure_permitted_params
+    added_params = [:name, :username]
+    devise_parameter_sanitizer.permit(:sign_up, keys: added_params)
+    devise_parameter_sanitizer.permit(:account_update, keys: added_params)
+  end
 end

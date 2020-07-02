@@ -15,9 +15,9 @@ class PostsController < ApplicationController
   end
 
   def create
-    @post = Post.new(post_params)
-    @post.member_id = current_member.id
-    if @post.save 
+    @post = current_member.posts.build(post_params)
+
+    if @post.save
       redirect_to posts_path
     else
       render :new
