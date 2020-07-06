@@ -64,7 +64,7 @@ end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'autoprefixer-rails'
-gem 'bootstrap-sass', '~> 3.2.0'
+gem 'bootstrap-sass', '~> 3.4.1'
 gem 'bulma-rails', '~> 0.9.0'
 gem 'devise'
 gem 'jquery-rails'
