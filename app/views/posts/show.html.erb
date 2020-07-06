@@ -1,0 +1,48 @@
+<div class="section">
+  <div class="container is-centered">
+    <div class="card">
+      <div class="card-content">
+        <div class="content is-medium">
+          <div class="body">
+            <%= simple_format @post.body %>
+          </div>
+        </div>
+        <hr>
+        <div class="member">
+          Posted by:
+          <% if member_signed_in? %>
+            <%= @post.member.name %>
+          <% else %>
+            Anonymous
+          <% end %>
+        </div>
+      </div>
+      <footer class="card-footer">
+        <p class="card-footer-item">
+          <%= link_to posts_path do %>
+            <button class="button is-primary is-outlined">
+              All Posts
+            </button>
+          <% end %>
+        </p>
+        <% if current_member == @post.member %>
+          <p class="card-footer-item">
+            <%= link_to edit_post_path(@post), class: "level-item" do %>
+              <span class="icon">
+                <i class="fa fa-pencil" area-hidden="true"></i>
+              </span>
+              <% end %>
+              </p>
+
+              <p class="card-footer-item">
+            <%= link_to post_path(@post), method: :delete, data: { confirm: "Are you sure?" }, class: "level-item" do %>
+              <span class="icon">
+                <i class="fa fa-trash"></i>
+              </span>
+            <% end %>
+          </p>
+        <% end %>
+      </footer>
+    </div>
+  </div>
+</div>

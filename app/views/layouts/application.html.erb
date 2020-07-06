@@ -6,10 +6,25 @@
     <%= csp_meta_tag %>
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= stylesheet_link_tag  href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" %> 
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
   <body>
+    <% if flash[:notice] %>
+      <div class="mb-0 bg-primary">
+        <p class="notice"><%= notice %></p>
+      </div>
+    <% end %>
+    <% if flash[:alert] %>
+      <div class="mb-0 bg-danger">
+        <p class="alert"><%= alert %></p>
+      </div>
+    <% end %>
+
+    <%= render 'layouts/navbar' %>
+
     <%= yield %>
   </body>
+
 </html>

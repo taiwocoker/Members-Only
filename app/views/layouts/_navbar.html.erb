@@ -1,0 +1,34 @@
+<nav class="navbar navbar-expand-sm bg-info">
+  <div class="navbar-nav">
+    <%= link_to root_path, class: 'navbar-link' do %>
+      <h1 class="title">Members Only</h1>
+    <% end %>
+  </div>
+
+  <div class="navbar-nav">
+    <div class="navbar-item">
+      <div class="navbar-link p-3">
+        <div class="field d-flex flex-row">
+          <p class="control">
+            <%= link_to "New Post", new_post_path, class: "button text-white p-2" %>
+          </p>
+          <% if member_signed_in? %>
+            <p class="control">
+              <%= link_to current_member.username, edit_member_registration_path, class: 'button text-white' %>
+            </p>
+            <p class="control">
+              <%= link_to "Sign Out", destroy_member_session_path, method: :delete, class: 'button text-white' %>
+            </p>
+          <% else %>
+            <p class="control">
+              <%= link_to 'Sign In', new_member_session_path, class: 'button text-white p-2' %> 
+            </p>
+            <p class="control">
+              <%= link_to 'Sign Up', new_member_registration_path, class: 'button text-white p-2' %> 
+            </p>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</nav>
